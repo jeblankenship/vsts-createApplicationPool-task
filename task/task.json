@@ -1,0 +1,64 @@
+{
+    "id": "A1DCB317-E46A-4BD6-AD19-63C4E08E62EE",
+    "name": "createApplicationPool",
+    "friendlyName": "Create Application Pool On Remote Computer",
+    "description": "Task creates Application Pool on the specified remote computer.",
+	"helpMarkDown": "[More Information](https://github.com/jeblankenship/vsts-createApplicationPool-task#readme)",
+    "category": "Utility",
+    "visibility": [
+        "Build",
+		"Release"
+    ],
+    "author": "James Blankenship",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 2
+    },
+    "minimumAgentVersion": "1.92.0",
+    "inputs": [
+        {
+            "name": "server",
+            "type": "string",
+            "label": "Server",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Server to run command on."
+        },
+        {
+            "name": "appPoolName",
+            "type": "string",
+            "label": "Application Pool",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Application Pool to run web app under."
+        },
+        {
+            "name": "domainUser",
+            "type": "string",
+            "label": "Identity Username",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "User name to run application pool as. (Leave blank to run as ApplicationPoolIdentity)"
+        },
+        {
+            "name": "domainPass",
+            "type": "string",
+            "label": "Identity User Password",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Password for user. (This value only applies if a user name is specified)"
+        }
+    ],
+    "instanceNameFormat": "Create Application Pool On Remote Computer",
+    "execution": {
+        "PowerShell": {
+            "target": "$(currentDirectory)\\create-applicationPool.ps1",
+            "argumentFormat": "",
+            "workingDirectory": "$(System.DefaultWorkingDirectory)"
+		}
+    },
+    "messages": {
+        "failed": "Application Pool creation failed."
+    }
+}

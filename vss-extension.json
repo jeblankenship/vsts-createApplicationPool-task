@@ -1,0 +1,68 @@
+{
+    "manifestVersion": 1,
+    "id": "createApplicationPool",
+    "name": "Create Application Pool On Remote Computer",
+    "version": "0.1.2",
+    "public": true,
+    "publisher": "docscode",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Task creates web application in specified web site on remote computer.",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "release",
+        "build",
+        "token",
+        "rename"
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/jeblankenship/vsts-createApplicationPool-task#readme"
+        },
+        "support": {
+            "uri": "https://github.com/jeblankenship/vsts-createApplicationPool-task/issues"  
+        }
+    },
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "branding": {
+        "color": "#1C3272",
+        "theme": "dark"
+    },
+    "screenshots": [
+        {
+            "path": "images/screenshot-01.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "files": [
+        {
+            "path": "task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "createApplicationPool-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "task"
+            }
+        }
+    ]
+}
