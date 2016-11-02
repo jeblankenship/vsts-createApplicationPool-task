@@ -1,6 +1,6 @@
 {
   "name": "docsCode.vsts-createApplicationPool-task",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Build task for VS Team Services that creates Application Pool on the specified remote computer.",
   "author": "James Blankenship",
   "license": "MIT",

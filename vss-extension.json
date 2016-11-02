@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "createApplicationPool",
     "name": "Create Application Pool On Remote Computer",
-    "version": "0.1.2",
+    "version": "0.1.4",
     "public": true,
     "publisher": "docscode",
     "targets": [

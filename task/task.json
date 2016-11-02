@@ -13,7 +13,7 @@
     "version": {
         "Major": 0,
         "Minor": 1,
-        "Patch": 2
+        "Patch": 4
     },
     "minimumAgentVersion": "1.92.0",
     "inputs": [
@@ -32,6 +32,42 @@
             "defaultValue": "",
             "required": true,
             "helpMarkDown": "Application Pool to run web app under."
+        },
+        {
+            "name": "runtimeVersion",
+            "type": "pickList",
+            "label": "Runtime Version",
+            "defaultValue": "v4.0",
+            "required": true,
+            "helpMarkDown": "Runtime version.",
+            "options": {
+                "v2.0": "v2.0",
+                "v4.0": "v4.0",
+            }
+        },
+        {
+            "name": "pipelineMode",
+            "type": "pickList",
+            "label": "Pipeline Mode",
+            "defaultValue": "Integrated",
+            "required": true,
+            "helpMarkDown": "Pipeline Mode.",
+            "options": {
+                "Classic": "Classic",
+                "Integrated": "Integrated",
+            }
+        },
+        {
+            "name": "enable32bit",
+            "type": "pickList",
+            "label": "Enable 32 Bit",
+            "defaultValue": "False",
+            "required": true,
+            "helpMarkDown": "Enable 32 Bit.",
+            "options": {
+                "False": "False",
+                "True": "True",
+            }
         },
         {
             "name": "domainUser",

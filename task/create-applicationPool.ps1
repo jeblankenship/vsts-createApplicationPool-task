@@ -2,6 +2,9 @@
 param(
     [string]$server,
     [string]$appPoolName,
+    [string]$runtimeVersion,
+    [string]$pipelineMode,
+    [string]$enable32bit,
     [string]$domainUser,
     [string]$domainPass
 )
@@ -15,6 +18,9 @@ $PSBoundParameters.Keys | % { Write-HOST "  ${_} = $(if ($_ -eq 'domainPass'){"*
 $command = {
     param(
         [string]$appPoolName,
+        [string]$runtimeVersion,
+        [string]$pipelineMode,
+        [string]$enable32bit,
         [string]$domainUser,
         [string]$domainPass
     )
@@ -30,8 +36,9 @@ $command = {
         Write-Host "Application Pool exist."
     }
     Write-Host "Updating Application Pool settings..."
-    Set-ItemProperty -Path $appPoolPath -Name managedRuntimeVersion -Value 'v4.0'
-    Set-ItemProperty -Path $appPoolPath -Name managedPipelineMode -Value 'Integrated'
+    Set-ItemProperty -Path $appPoolPath -Name managedRuntimeVersion -Value $runtimeVersion
+    Set-ItemProperty -Path $appPoolPath -Name managedPipelineMode -Value $pipelineMode
+    Set-ItemProperty -Path $appPoolPath -Name enable32BitAppOnWin64 -Value $enable32bit
     if ([string]::IsNullOrEmpty($domainUser)){
         Write-Host "Running under ApplicationPoolIdentity."
         Set-ItemProperty -Path $appPoolPath -Name ProcessModel -value @{identitytype=4}
@@ -51,4 +58,4 @@ $command = {
     Write-Host "Create Application Pool Task Completed."
 }
 
-Invoke-Command -ComputerName $server $command -ArgumentList $appPoolName,$domainUser,$domainPass
+Invoke-Command -ComputerName $server $command -ArgumentList $appPoolName,$runtimeVersion,$pipelineMode,$enable32bit,$domainUser,$domainPass
